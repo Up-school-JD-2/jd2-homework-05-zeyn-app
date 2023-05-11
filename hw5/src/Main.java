@@ -77,7 +77,7 @@ public class Main {
     public void pay() throws SystemNotWorkingException {
         int random = (int) (Math.random() * 100);
         // System.out.println("random: " + random);
-        if (random > 50)
+        if (random > 75)
             throw new SystemNotWorkingException("Try again");
     }
 }
