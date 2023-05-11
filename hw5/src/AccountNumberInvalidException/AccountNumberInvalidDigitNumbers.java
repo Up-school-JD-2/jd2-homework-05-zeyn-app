@@ -1,0 +1,7 @@
+package AccountNumberInvalidException;
+
+public class AccountNumberInvalidDigitNumbers extends AccountNumberInvalidException{
+    public AccountNumberInvalidDigitNumbers(String message){
+        super(message);
+    }
+}
