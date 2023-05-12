@@ -10,30 +10,15 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        CreditCart creditCart;
+        CreditCart creditCart = null;
         Main main = new Main();
-
-        //while(true){}
+        //while (true) {
         try {
-            main.handleCreditCard();
-        } catch (SystemNotWorkingException e) {
-            System.out.println(e);
-            try {
-                creditCart = main.handleCreditCard();
-                System.out.println("\nPayment process completed successfully.");
-                System.out.println(creditCart);
-            } catch (SystemNotWorkingException subEx) {
-                System.out.println(subEx);
-            }
-        }
-        //}
-    }
-
-    public CreditCart handleCreditCard() throws SystemNotWorkingException {
-        CreditCart creditCart = new CreditCart();
-        try {
-            creditCart = createCreditCard();
-            pay();
+            creditCart = main.createCreditCard();
+            System.out.println();
+            main.pay();
+            System.out.println("Payment process completed successfully.");
+            System.out.println(creditCart);
         } catch (PaymentAmountInvalidExcepiton e) {
             System.out.println(e);
         } catch (ExpirationDateInvalidException e) {
@@ -42,11 +27,22 @@ public class Main {
             System.out.println(e);
         } catch (CvvInvalidException e) {
             System.out.println(e);
+        } catch (RuntimeException e) {
+            System.out.println(e);
+        } catch (SystemNotWorkingException e) {
+            System.out.println(e);
+            try {
+                main.pay();
+                System.out.println("Payment process completed successfully.");
+                System.out.println(creditCart);
+            } catch (SystemNotWorkingException subEx) {
+                System.out.println(subEx);
+            }
         }
-        return creditCart;
+        //}
     }
 
-    public CreditCart createCreditCard() throws PaymentAmountInvalidExcepiton, AccountNumberInvalidException, ExpirationDateInvalidException, CvvInvalidException {
+    public CreditCart createCreditCard() throws PaymentAmountInvalidExcepiton, AccountNumberInvalidException, ExpirationDateInvalidException, CvvInvalidException, RuntimeException {
         // 1234567890123456
         CreditCartManager creditCartManager = new CreditCartManager();
         CreditCart creditCart;
@@ -76,7 +72,7 @@ public class Main {
 
     public void pay() throws SystemNotWorkingException {
         int random = (int) (Math.random() * 100);
-        // System.out.println("random: " + random);
+        System.out.println("random: " + random);
         if (random > 75)
             throw new SystemNotWorkingException("Try again");
     }
