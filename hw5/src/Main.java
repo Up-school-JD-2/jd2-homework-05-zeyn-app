@@ -12,7 +12,7 @@ public class Main {
     public static void main(String[] args) {
         CreditCart creditCart = null;
         Main main = new Main();
-        //while (true) {
+        while (true) {
         try {
             creditCart = main.createCreditCard();
             System.out.println();
@@ -39,7 +39,7 @@ public class Main {
                 System.out.println(subEx);
             }
         }
-        //}
+        }
     }
 
     public CreditCart createCreditCard() throws PaymentAmountInvalidExcepiton, AccountNumberInvalidException, ExpirationDateInvalidException, CvvInvalidException, RuntimeException {
@@ -74,6 +74,6 @@ public class Main {
         int random = (int) (Math.random() * 100);
         System.out.println("random: " + random);
         if (random > 75)
-            throw new SystemNotWorkingException("Try again");
+            throw new SystemNotWorkingException("System not working");
     }
 }
