@@ -1,4 +1,4 @@
-package ExpirationDateInvalidException;
+package expirationDateInvalidException;
 
 public class ExpirationDateInvalidException extends Exception{
     public ExpirationDateInvalidException(String message){

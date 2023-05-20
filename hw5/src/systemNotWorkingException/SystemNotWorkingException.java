@@ -1,4 +1,4 @@
-package SystemNotWorkingException;
+package systemNotWorkingException;
 
 public class SystemNotWorkingException extends Exception{
     public SystemNotWorkingException(String message){
