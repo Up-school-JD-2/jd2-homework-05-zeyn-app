@@ -58,7 +58,7 @@ public class Main {
 
         System.out.print("Expiration Date: ");
         expirationDate = scanner.nextLine();
-        creditCartManager.checkValidExparitaionDate(expirationDate);
+        creditCartManager.checkValidExpirationDate(expirationDate);
 
         System.out.print("CVV: ");
         cvv = scanner.nextLine();

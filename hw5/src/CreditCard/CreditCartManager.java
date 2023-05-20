@@ -22,7 +22,7 @@ public class CreditCartManager {
             throw new PaymentAmountNegativeException("Payment account must be grater than zero");
     }
 
-    public void checkValidExparitaionDate(String date) throws ExpirationDateInvalidException {
+    public void checkValidExpirationDate(String date) throws ExpirationDateInvalidException {
         date = date.replaceAll(" ", "");
         if (date.length() == 6)
             date = 0 + date;
