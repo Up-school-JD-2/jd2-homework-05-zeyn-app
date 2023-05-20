@@ -13,7 +13,7 @@ import java.util.Date;
 public class CreditCartManager {
     public void checkValidPaymentAmount(String paymentAmount) throws PaymentAmountInvalidExcepiton {
         for (char c : paymentAmount.toCharArray()) {
-            if (!Character.isDigit(c) && c != '.')
+            if (!Character.isDigit(c) && c != '.' && c != '-' && c != '+')
                 throw new PaymentAmountIcludeInvalidCharacterException("Payment account must include only numbers and \".\"");
         }
 

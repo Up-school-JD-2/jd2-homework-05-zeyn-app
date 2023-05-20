@@ -12,34 +12,32 @@ public class Main {
     public static void main(String[] args) {
         CreditCart creditCart = null;
         Main main = new Main();
-        while (true) {
-        try {
-            creditCart = main.createCreditCard();
-            System.out.println();
-            main.pay();
-            System.out.println("Payment process completed successfully.");
-            System.out.println(creditCart);
-        } catch (PaymentAmountInvalidExcepiton e) {
-            System.out.println(e);
-        } catch (ExpirationDateInvalidException e) {
-            System.out.println(e);
-        } catch (AccountNumberInvalidException e) {
-            System.out.println(e);
-        } catch (CvvInvalidException e) {
-            System.out.println(e);
-        } catch (RuntimeException e) {
-            System.out.println(e);
-        } catch (SystemNotWorkingException e) {
-            System.out.println(e);
+        //while (true) {
             try {
+                creditCart = main.createCreditCard();
+                System.out.println();
                 main.pay();
                 System.out.println("Payment process completed successfully.");
                 System.out.println(creditCart);
-            } catch (SystemNotWorkingException subEx) {
-                System.out.println(subEx);
+            } catch (PaymentAmountInvalidExcepiton e) {
+                System.out.println(e.getMessage());
+            } catch (ExpirationDateInvalidException e) {
+                System.out.println(e.getMessage());
+            } catch (AccountNumberInvalidException e) {
+                System.out.println(e.getMessage());
+            } catch (CvvInvalidException e) {
+                System.out.println(e.getMessage());
+            } catch (SystemNotWorkingException e) {
+                System.out.println(e.getMessage());
+                try {
+                    main.pay();
+                    System.out.println("Payment process completed successfully.");
+                    System.out.println(creditCart);
+                } catch (SystemNotWorkingException subEx) {
+                    System.out.println(subEx.getMessage());
+                }
             }
-        }
-        }
+       // }
     }
 
     public CreditCart createCreditCard() throws PaymentAmountInvalidExcepiton, AccountNumberInvalidException, ExpirationDateInvalidException, CvvInvalidException, RuntimeException {
@@ -58,7 +56,7 @@ public class Main {
         accountNumber = scanner.nextLine();
         creditCartManager.checkValidAccountNumber(accountNumber);
 
-        System.out.print("Expilation Date: ");
+        System.out.print("Expiration Date: ");
         expirationDate = scanner.nextLine();
         creditCartManager.checkValidExparitaionDate(expirationDate);
 
@@ -74,6 +72,6 @@ public class Main {
         int random = (int) (Math.random() * 100);
         System.out.println("random: " + random);
         if (random > 75)
-            throw new SystemNotWorkingException("System not working");
+            throw new SystemNotWorkingException("System not working, please be patient...");
     }
 }
