@@ -7,8 +7,8 @@ import paymentAmountInvalidException.PaymentAmountIcludeInvalidCharacterExceptio
 import paymentAmountInvalidException.PaymentAmountInvalidExcepiton;
 import paymentAmountInvalidException.PaymentAmountNegativeException;
 
+import java.time.LocalDate;
 
-import java.util.Date;
 
 public class CreditCartManager {
     public void checkValidPaymentAmount(String paymentAmount) throws PaymentAmountInvalidExcepiton {
@@ -41,8 +41,9 @@ public class CreditCartManager {
         if (Integer.parseInt(month) <= 0 || Integer.parseInt(month) > 12)
             throw new MonthInvalidException("Month must be between 1 and 12");
 
-        int currentYear = new Date().getYear() + 1900;
-        // System.out.println("currentYear: " + currentYear);
+        LocalDate currentDate = LocalDate.now();
+        int currentYear = currentDate.getYear();
+       // System.out.println("currentYear: " + currentYear + "\ncurrentDate: " + currentDate);
         if (currentYear > Integer.parseInt(year))
             throw new YearInvalidException("Year must not be a previous year");
     }
